@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BTB Surveyors — Website Redesign Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<style>
+  /* proposal-specific touches */
+  .doc-hero { background: var(--ink); color:#fff; padding-block: clamp(54px,8vw,100px); position:relative; overflow:hidden; }
+  .doc-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 80% at 88% 0%,rgba(253,210,21,.16),transparent 60%);}
+  .doc-hero h1{color:#fff;max-width:16ch}
+  .kicker{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem .9rem;border-radius:var(--r-pill)}
+  .num-head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.4rem}
+  .num-head .n{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--yellow-deep);background:var(--ink);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.5vw,28px)}
+  .map{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:1.6rem}
+  .map.before{background:var(--gray-100)}
+  .map h4{font-family:var(--font-display);font-size:1.05rem;text-transform:none;letter-spacing:-.01em;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+  .tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.85;color:var(--gray-700);white-space:pre-wrap}
+  .tree .new{background:var(--yellow-soft);color:var(--ink);font-weight:700;border-radius:4px;padding:0 3px}
+  .swatches{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
+  .sw{border-radius:12px;width:84px;height:84px;display:flex;align-items:flex-end;padding:.45rem;font-size:.66rem;font-weight:700;box-shadow:var(--shadow-sm)}
+  .page-thumb{display:block;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;transition:.2s;height:100%}
+  .page-thumb:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+  .page-thumb .frame{aspect-ratio:16/10;background:linear-gradient(160deg,var(--ink),var(--ink-800));position:relative;display:grid;place-items:center;color:rgba(255,255,255,.4)}
+  .page-thumb .frame .label{position:absolute;left:14px;top:12px;display:flex;gap:5px}
+  .page-thumb .frame .label i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.2)}
+  .page-thumb .frame .label i:first-child{background:var(--yellow)}
+  .page-thumb .frame .big{font-family:var(--font-display);font-size:1.5rem;color:#fff;font-weight:700}
+  .page-thumb .meta{padding:1rem 1.2rem}
+  .page-thumb .meta b{display:block;font-size:1.02rem}
+  .page-thumb .meta small{color:var(--gray-500)}
+  .timeline{position:relative;margin-top:1rem}
+  .phase{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--gray-200)}
+  .phase .pn{font-family:var(--font-display);font-weight:700;color:var(--ink);background:var(--yellow);border-radius:12px;width:74px;height:54px;display:grid;place-items:center;font-size:.85rem;text-align:center;line-height:1.1}
+  .impact{display:inline-block;background:var(--green-soft);color:var(--green);font-weight:700;font-size:.78rem;padding:.2rem .6rem;border-radius:var(--r-pill);margin-top:.4rem}
+  .wp-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.1rem}
+  .wp-step .k{flex-shrink:0;width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+  table.facts{width:100%;border-collapse:collapse;margin-top:1rem}
+  table.facts td{padding:.7rem .4rem;border-bottom:1px solid var(--gray-200);vertical-align:top;font-size:.96rem}
+  table.facts td:first-child{font-weight:700;width:42%}
+  @media(max-width:760px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- header -->
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Primary">
+    <a class="brand" href="proposal.html"><span class="logo-badge"><span>btb</span></span> BTB&nbsp;Surveyors</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="#why">The opportunity</a>
+      <a href="#sitemap">Sitemap</a>
+      <a href="#look">Look &amp; feel</a>
+      <a href="#pages">Page drafts</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#wordpress">WordPress</a>
+    </div>
+    <div class="nav-cta"><a class="btn" href="index.html">View live homepage demo →</a></div>
+  </nav>
+</header>
+
+<!-- hero -->
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="kicker">Website Redesign Proposal · 2026</span>
+    <h1 style="margin-top:1.3rem">Turning the BTB website into a lead machine.</h1>
+    <p class="lead" style="color:rgba(255,255,255,.75);margin-top:1.1rem;max-width:60ch">A revenue-first redesign built around one truth in the UK survey market: <b style="color:#fff">78% of buyers go with the first surveyor to respond.</b> This document shows the proposed sitemap, look &amp; feel, and clickable page drafts for your sign-off — before we build the WordPress theme.</p>
+    <div class="cta-actions" style="justify-content:flex-start;margin-top:1.8rem">
+      <a class="btn btn--lg" href="index.html">Open the homepage demo <span class="arr">→</span></a>
+      <a class="btn btn--ghost-light btn--lg" href="#pages">See all page drafts</a>
+    </div>
+  </div>
+</section>
+
+<!-- the opportunity -->
+<section class="section" id="why">
+  <div class="wrap" style="max-width:880px">
+    <div class="num-head"><span class="n">01</span><span class="eyebrow">The opportunity</span></div>
+    <h2>Great firm. Brochure website. Leaking leads.</h2>
+    <p class="lead" style="margin-top:1rem">BTB has everything that wins in this market — RICS regulation, 1,200+ surveys, a 4.8 rating and fair, transparent pricing. But the current site is built to <i>inform</i>, not to <i>convert</i>. The high-intent traffic that should be booking with you is instead being captured by comparison sites (Compare My Move, reallymoving, RICS Find a Surveyor) and sold back to firms like yours as paid leads.</p>
+    <table class="facts">
+      <tr><td>⚡ The market reality</td><td>78% of survey customers buy from the <b>first firm that responds</b> — and instant-quote calculators lift website conversion by <b>200–400%</b> (one comparable trade went 1.8% → 7.2% in a month).</td></tr>
+      <tr><td>❌ Where you leak today</td><td>No instant price (just a slow form), no local area pages, reviews claimed but not shown, one CTA type, no speed-to-lead, thin content moat.</td></tr>
+      <tr><td>✅ The fix</td><td>Own the instant quote, win the 15-minute callback race, and capture local + informational search — so you stop renting demand and keep the full margin.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- sitemap -->
+<section class="section section--cream" id="sitemap">
+  <div class="wrap">
+    <div class="num-head"><span class="n">02</span><span class="eyebrow">Information architecture</span></div>
+    <h2 style="margin-bottom:1.6rem">Current sitemap → proposed sitemap</h2>
+    <div class="compare">
+      <div class="map before">
+        <h4>⬅︎ Current (as-is)</h4>
+        <div class="tree">Home
+├─ Services ▾
+│   ├─ Level 2 Home Survey
+│   ├─ Level 3 Building Survey
+│   ├─ RICS Valuations
+│   └─ Help to Buy
+├─ Blog
+├─ Contact
+└─ Get Free Quote → generic form
+
+Single CTA. No instant price.
+No local pages. No reviews page.
+No buyer-situation segmentation.</div>
+      </div>
+      <div class="map">
+        <h4>➡︎ Proposed (to-be)</h4>
+        <div class="tree">Home  <span class="new">← instant quote is the hero</span>
+├─ <span class="new">Get My Quote</span>  (multi-step calculator)
+├─ Surveys
+│   ├─ Level 2 Home Survey
+│   ├─ Level 3 Building Survey
+│   ├─ <span class="new">New-Build Snagging</span>
+│   ├─ <span class="new">Specific Defect / Damp</span>
+│   └─ <span class="new">Compare Survey Types</span>
+├─ Valuations
+│   ├─ Help to Buy
+│   ├─ <span class="new">Probate &amp; IHT</span>
+│   ├─ <span class="new">Matrimonial / Divorce</span>
+│   └─ <span class="new">Shared Ownership</span>
+├─ <span class="new">Areas We Cover</span>  (local SEO engine)
+│   └─ /surveyors/london … +30 cities
+├─ <span class="new">Reviews</span>  (live Google + Trustpilot)
+├─ Guides  (was "Blog" → resource hub)
+├─ About / Our Surveyors
+└─ Contact  (phone · WhatsApp · callback)
+
+Sticky "Get my quote" + mobile call bar.</div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:1rem;font-size:.9rem">Highlighted items are <span class="new">new</span> — each one adds either a conversion lever, a higher-margin service line, or a fresh organic-search surface.</p>
+  </div>
+</section>
+
+<!-- look and feel -->
+<section class="section" id="look">
+  <div class="wrap">
+    <div class="num-head"><span class="n">03</span><span class="eyebrow">Look &amp; feel</span></div>
+    <h2>Your brand, sharpened</h2>
+    <div class="grid cols-2" style="align-items:center;margin-top:1.6rem">
+      <div>
+        <p class="lead">We've kept BTB's existing identity — the confident <b>yellow on near-black</b> and warm cream — so the new site feels unmistakably like you, just more premium and conversion-focused. Headlines move to a characterful display face (Bricolage Grotesque) while body copy stays on your current Inter for clean readability.</p>
+        <div class="swatches">
+          <div class="sw" style="background:#fdd215;color:#1f1f1f">#fdd215<br>Yellow</div>
+          <div class="sw" style="background:#1f1f1f;color:#fdd215">#1f1f1f<br>Ink</div>
+          <div class="sw" style="background:#f2eadf;color:#1f1f1f">#f2eadf<br>Cream</div>
+          <div class="sw" style="background:#185d3b;color:#fff">#185d3b<br>Trust</div>
+          <div class="sw" style="background:#fff;color:#1f1f1f;border:1px solid #e5e7eb">#fff<br>Paper</div>
+        </div>
+        <ul class="checklist" style="margin-top:1.6rem">
+          <li><span><b>Confident &amp; trustworthy</b> — bold dark sections frame your expertise; yellow drives the eye to every CTA.</span></li>
+          <li><span><b>Mobile-first</b> — most buyers search on a phone; sticky call + quote bar is always one tap away.</span></li>
+          <li><span><b>Fast &amp; accessible</b> — lightweight, no heavy page builders, AA contrast throughout.</span></li>
+        </ul>
+      </div>
+      <div class="quote-card" style="box-shadow:var(--shadow-lg)">
+        <div class="quote-card__head"><strong>Component preview</strong><span class="tag">live</span></div>
+        <div class="quote-card__body">
+          <span class="eyebrow">Buttons</span>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.7rem 0 1.4rem">
+            <span class="btn">Primary</span><span class="btn btn--dark">Dark</span><span class="btn btn--ghost">Ghost</span>
+          </div>
+          <span class="eyebrow">Trust pills</span>
+          <div class="hero-badges" style="margin:.7rem 0 1.4rem">
+            <span class="pill" style="background:var(--gray-100);color:var(--ink);border-color:var(--gray-200)"><span class="dot"></span>RICS qualified</span>
+            <span class="pill" style="background:var(--gray-100);color:var(--ink);border-color:var(--gray-200)"><span class="dot"></span>Price match</span>
+          </div>
+          <span class="eyebrow">Type scale</span>
+          <h3 style="margin:.5rem 0 .2rem">Bricolage Grotesque</h3>
+          <p style="margin:0">Inter body copy — clean, neutral, highly readable on every device.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- page drafts -->
+<section class="section section--cream" id="pages">
+  <div class="wrap">
+    <div class="num-head"><span class="n">04</span><span class="eyebrow">Clickable drafts</span></div>
+    <h2 style="margin-bottom:.6rem">Every page, ready to click through</h2>
+    <p class="lead" style="max-width:60ch;margin-bottom:2rem">These are real, working HTML drafts (not images). Click any one to explore it. Once you're happy with the structure and feel, we convert them into your WordPress theme.</p>
+    <div class="grid cols-3">
+      <a class="page-thumb" href="index.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Home + Quote</span></div><div class="meta"><b>Homepage</b><small>Hero with working instant-quote calculator</small></div></a>
+      <a class="page-thumb" href="surveys.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Surveys</span></div><div class="meta"><b>Surveys overview</b><small>L2, L3, snagging, defect + compare tool</small></div></a>
+      <a class="page-thumb" href="valuations.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Valuations</span></div><div class="meta"><b>Valuations</b><small>HTB, probate, matrimonial, shared ownership</small></div></a>
+      <a class="page-thumb" href="areas.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Areas</span></div><div class="meta"><b>Areas we cover</b><small>Local SEO landing-page engine</small></div></a>
+      <a class="page-thumb" href="reviews.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Reviews</span></div><div class="meta"><b>Reviews</b><small>Social proof wall + ratings</small></div></a>
+      <a class="page-thumb" href="guides.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Guides</span></div><div class="meta"><b>Guides hub</b><small>Organic content engine (was "Blog")</small></div></a>
+      <a class="page-thumb" href="about.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">About</span></div><div class="meta"><b>About / surveyors</b><small>Named, credentialled RICS people</small></div></a>
+      <a class="page-thumb" href="contact.html"><div class="frame"><span class="label"><i></i><i></i><i></i></span><span class="big">Contact</span></div><div class="meta"><b>Contact</b><small>Phone · WhatsApp · callback form</small></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- roadmap -->
+<section class="section" id="roadmap">
+  <div class="wrap" style="max-width:880px">
+    <div class="num-head"><span class="n">05</span><span class="eyebrow">Build roadmap</span></div>
+    <h2>Ship the revenue first</h2>
+    <p class="lead" style="margin-top:.8rem">We don't build everything at once. Phase 1 is ~80% of the upside and proves the model with real conversion data before investing in the rest.</p>
+    <div class="timeline">
+      <div class="phase">
+        <div class="pn">Phase 1<br><small style="font-weight:500">Wks 1–3</small></div>
+        <div>
+          <h3>Conversion core</h3>
+          <p>Instant-quote calculator as the homepage hero · 15-minute speed-to-lead automation (instant SMS/email + CRM alert) · sticky mobile call/WhatsApp bar · live Google &amp; Trustpilot reviews · named surveyors + RICS badges.</p>
+          <span class="impact">Biggest revenue lever</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="pn">Phase 2<br><small style="font-weight:500">Wks 4–7</small></div>
+        <div>
+          <h3>Demand capture</h3>
+          <p>"Areas We Cover" — 20–30 city/county pages for local SEO · Blog restructured into a Guides hub (survey explainers, defect library, cost guides) · Compare Survey Types decision tool · sample-report lead magnet.</p>
+          <span class="impact">Own organic search</span>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="pn">Phase 3<br><small style="font-weight:500">Wks 8–12</small></div>
+        <div>
+          <h3>Margin expansion</h3>
+          <p>New service lines (snagging, probate, matrimonial, staircasing) · checkout tiers, order bumps &amp; express turnaround · optimised comparison-site profiles · A/B testing loop on calculator + CTA copy.</p>
+          <span class="impact">More per customer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wordpress -->
+<section class="section section--ink" id="wordpress">
+  <div class="wrap" style="max-width:900px">
+    <div class="num-head"><span class="n" style="background:var(--yellow);color:var(--ink)">06</span><span class="eyebrow on-dark">From draft to WordPress</span></div>
+    <h2 style="color:#fff">"How simple is the WordPress build?"</h2>
+    <p class="lead" style="color:rgba(255,255,255,.75);margin-top:.9rem">Short answer: <b style="color:var(--yellow)">very</b>. These drafts <i>are</i> the design system — clean HTML and one stylesheet, no proprietary page-builder mess. Converting to a WordPress theme is a well-trodden, low-risk path:</p>
+    <div style="margin-top:1.8rem">
+      <div class="wp-step"><span class="k">1</span><div><b style="color:#fff">Approve structure &amp; feel (you're here).</b> Sign off the sitemap and look from these drafts. Cheap to change now, expensive to change later.</div></div>
+      <div class="wp-step"><span class="k">2</span><div><b style="color:#fff">Pick the WordPress route.</b> Either a lightweight custom block theme built straight from this CSS, or a clean builder (e.g. Bricks/GeneratePress) styled to match — both reuse this exact design.</div></div>
+      <div class="wp-step"><span class="k">3</span><div><b style="color:#fff">Wire the dynamic bits.</b> The quote calculator connects to a survey CRM (Survey Booker / I Need Leads) for the 15-minute callback; reviews pull live from Google; area &amp; guide pages become editable templates you can add to yourself.</div></div>
+      <div class="wp-step"><span class="k">4</span><div><b style="color:#fff">Launch &amp; measure.</b> Go live on Phase 1, instrument conversion + speed-to-lead, then iterate.</div></div>
+    </div>
+    <p style="color:rgba(255,255,255,.6);margin-top:1.6rem;font-size:.95rem">Because the visual decisions are already locked in code, the WordPress stage is mostly templating and plumbing — not redesign. That keeps it fast and keeps the cost predictable.</p>
+    <div class="cta-actions" style="justify-content:flex-start;margin-top:1.8rem">
+      <a class="btn btn--lg" href="index.html">Explore the homepage demo <span class="arr">→</span></a>
+      <a class="btn btn--ghost-light btn--lg" href="#pages">Review the page drafts</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom" style="margin-top:0;border:0;padding-top:0">
+      <span>© 2026 · Website redesign proposal prepared for BTB Surveyors.</span>
+      <span class="muted">Draft mockups for sign-off — not the final WordPress build.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
